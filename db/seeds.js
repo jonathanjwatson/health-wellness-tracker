@@ -37,10 +37,19 @@ const userOne = new User({
     weight: 250,
     today: [dayOne]
 })
+const userTwo = new User({
+    firstName: "Susy",
+    lastName: "Barnwell",
+    email: "susy@gmail.com",
+    password: "password1",
+    weight: 95,
+    today: [dayOne]
+})
 waterOne.save().then(() => console.log("Water One Saved!"));
 waterTwo.save().then(() => console.log("WaterTwo Saved!"));
 waterThree.save().then(() => console.log("Water Three Saved!"));
 dayOne.save().then(() => console.log("Day One Saved"));
 userOne.save().then(() => console.log("User One Saved!"));
+userTwo.save().then(() => console.log("User Two saved!"));
 
 mongoose.connection.close();

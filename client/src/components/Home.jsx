@@ -6,7 +6,7 @@ class Home extends Component {
     constructor() {
         super();
         this.state = {
-            user: [],
+            users: [],
             redirect: false
         }
     }
@@ -14,14 +14,20 @@ class Home extends Component {
         axios.get('/api/user')
         .then(res => {
             console.log(res.data);
-            this.setState({user: res.data})
-            
+            this.setState({users: res.data})
+            console.log(this.state.users);
         })
     }
     render() {
         return (
             <div>
-                Welcome to the HomePage
+                {this.state.users.map((user, i) => (
+                    <div key={i}>
+                        <Link to={`/user/${user._id}`}>
+                        {user.firstName}'s Tracker
+                        </Link>
+                    </div>
+                ))}
             </div>
         );
     }
