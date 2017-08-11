@@ -30,12 +30,11 @@ class UserDashboard extends Component {
         console.log(this.state.servingsConsumed);
         const waterConsumed = this.state.servingsConsumed;
         const id = this.props.match.params.userId;
-
+        this.setState({ servingsConsumed: waterConsumed + 1});
         axios.put(`/api/user/addNewServingConsumed/${id}`, {userId: this.state.user.id})
         .then(res => {
             console.log("Successfully Updated Servings");
             console.log(res.data);
-            this.setState({ servingsConsumed: waterConsumed + 1});
         })
     }
 

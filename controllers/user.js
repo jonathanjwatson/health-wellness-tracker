@@ -10,10 +10,11 @@ router.get("/", (req, res) => {
     res.json(user);
   });
 });
+
 router.put("/addNewServingConsumed/:id", (req, res) => {
   User.findById(req.params.id).then((user) => {
     user.today[0].waterRatio[0].servingsConsumed +=1;
-    res.json(user);
+    return user.save();
   })
 })
 
