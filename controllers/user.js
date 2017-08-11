@@ -9,11 +9,16 @@ router.get("/", (req, res) => {
   });
 });
 
+router.get("/email/:email", (req, res) => {
+  const userEmail = req.body.e
+  User.findOne({"email": userEmail})
+})
 router.get("/:id", (req, res) => {
   User.findById(req.params.id).then((user) => {
     res.json(game);
   })
 })
+
 
 
 module.exports = router;
