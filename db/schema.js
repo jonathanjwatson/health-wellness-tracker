@@ -20,11 +20,11 @@ const userSchema = mongoose.Schema({
   today: [daySchema]
 });
 
-daySchema.pre('save', function(next){
-    now = new Date();
-    this.date = now;
-    next();
-})
+// daySchema.pre('save', function(next){
+//     now = new Date();
+//     this.date = now;
+//     next();
+// })
 
 
 const Water = mongoose.model('Water', waterSchema);

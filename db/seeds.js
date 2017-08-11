@@ -29,13 +29,17 @@ const dayOne = new Day({
     date: new Date(),
     waterRatio: [waterOne]
 })
+const dayTwo = new Day({
+    date: "2017-08-10T19:02:48.200Z",
+    waterRatio: [waterTwo]
+})
 const userOne = new User({
     firstName: "Jonathan",
     lastName: "Watson",
     email: "jonathanwatson1@gmail.com",
     password: "monkey",
     weight: 250,
-    today: [dayOne]
+    today: [dayOne, dayTwo]
 })
 const userTwo = new User({
     firstName: "Susy",
@@ -49,6 +53,7 @@ waterOne.save().then(() => console.log("Water One Saved!"));
 waterTwo.save().then(() => console.log("WaterTwo Saved!"));
 waterThree.save().then(() => console.log("Water Three Saved!"));
 dayOne.save().then(() => console.log("Day One Saved"));
+dayTwo.save().then(() => console.log("Day Two Saved!"));
 userOne.save().then(() => console.log("User One Saved!"));
 userTwo.save().then(() => console.log("User Two saved!"));
 
