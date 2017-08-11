@@ -4,13 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-  "start": "node server.js",
-  "dev": "concurrently \"nodemon server.js\" \"cd ./client  && yarn start \" ",
-  "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "dev": "concurrently \"nodemon server.js\" \"cd ./client  && yarn start \" ",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "cd client && npm install && npm run build"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jwats287/health-wellness-tracker.git"
+  },
+  "engines": {
+    "node": "8.1.2"
   },
   "keywords": [],
   "author": "",
