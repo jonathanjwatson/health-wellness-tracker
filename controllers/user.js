@@ -1,7 +1,9 @@
 const express = require("express");
+const router = express.Router();
+const mongoose = require('mongoose')
 const User = require("../models/user");
 
-const router = express.Router();
+
 
 router.get("/", (req, res) => {
   User.find().then((user) => {
@@ -9,13 +11,15 @@ router.get("/", (req, res) => {
   });
 });
 
-router.get("/email/:email", (req, res) => {
-  const userEmail = req.body.e
-  User.findOne({"email": userEmail})
+router.post("/email/:email", (req, res) => {
+  const userEmail = req.params.email;
+  User.findOne({"email": userEmail}).then((user) => {
+    res.json(user);
+  })
 })
 router.get("/:id", (req, res) => {
   User.findById(req.params.id).then((user) => {
-    res.json(game);
+    res.json(user);
   })
 })
 
