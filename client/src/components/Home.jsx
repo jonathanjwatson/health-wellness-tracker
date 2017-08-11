@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom';
+import UserDashboard from "./UserDashboard";
 
 
 const AlignCenter = styled.div`
@@ -14,9 +15,11 @@ class Home extends Component {
         super();
         this.state = {
             users: [],
-            redirect: false,
+            user: [],
+            id: '',
             email: '',
             password: '',
+            redirect: false
         }
     }
 
@@ -39,13 +42,28 @@ class Home extends Component {
         e.preventDefault();
         const email = this.state.email;
         const password = this.state.password;
-        axios.get(`/api/game`)
+        axios.post(`/api/user/email/${email}`)
         .then(res => {
-
+            console.log("Successfully Inputed Email");
+            console.log(res.data);
+            console.log(res.data.password);
+            if (password === res.data.password){
+                console.log("Password matches")
+                this.setState({ redirect: true, id: res.data._id, user: res.data })
+            } else {
+                console.log("Password don't match")
+            }
         })
     }
     render() {
-        return (
+        if (this.state.redirect) {
+             return <Redirect to={{
+                 pathname: `/user/${this.state.id}`,
+                 state: {user: this.state.user}
+                }}
+                 />;
+        } else {
+                    return (
             <AlignCenter>
                 <form>
                 <div>
@@ -66,7 +84,7 @@ class Home extends Component {
                 </div>
                 <div>
                     <button>Create Account</button>
-                    <button>Login</button>
+                    <button onClick={this._logIn}>Login</button>
                 </div>
 
                 </form>
@@ -81,6 +99,7 @@ class Home extends Component {
                 ))}
             </AlignCenter>
         );
+        }
     }
 }
 
