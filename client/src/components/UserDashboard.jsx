@@ -9,7 +9,8 @@ class UserDashboard extends Component {
         this.state = {
             user: {},
             servingsDesired: 0,
-            servingsConsumed: 0
+            servingsConsumed: 0,
+            todaysDate: null,
         }
     }
     componentWillMount() {
@@ -19,7 +20,8 @@ class UserDashboard extends Component {
             this.setState({
                 user: res.data, 
                 servingsDesired: res.data.today[0].waterRatio[0].servingsDesired, 
-                servingsConsumed: res.data.today[0].waterRatio[0].servingsConsumed
+                servingsConsumed: res.data.today[0].waterRatio[0].servingsConsumed,
+                todaysDate: res.data.today[0].date
             })
             console.log(this.state.user);
             console.log(this.state.servingsConsumed);
@@ -44,7 +46,7 @@ class UserDashboard extends Component {
             <div>
                 <h1>Your User Dashbaord</h1>
                 <h2>{this.state.user.firstName}</h2>
-                <h3>Today</h3>
+                <h3>{this.state.todaysDate}</h3>
                 <p>Servings Desired: {this.state.servingsDesired}</p>
                 <p>Servings Consumed: {this.state.servingsConsumed}</p>
                 <button onClick={this._drinkWaterButton}>I drank water!</button>
