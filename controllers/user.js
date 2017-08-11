@@ -10,6 +10,12 @@ router.get("/", (req, res) => {
     res.json(user);
   });
 });
+router.put("/addNewServingConsumed/:id", (req, res) => {
+  User.findById(req.params.id).then((user) => {
+    user.today[0].waterRatio[0].servingsConsumed +=1;
+    res.json(user);
+  })
+})
 
 router.post("/email/:email", (req, res) => {
   const userEmail = req.params.email;
@@ -22,6 +28,7 @@ router.get("/:id", (req, res) => {
     res.json(user);
   })
 })
+
 
 
 

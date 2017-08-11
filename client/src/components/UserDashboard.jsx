@@ -7,7 +7,7 @@ class UserDashboard extends Component {
     constructor() {
         super();
         this.state = {
-            user: [],
+            user: {},
             servingsDesired: 0,
             servingsConsumed: 0
         }
@@ -16,15 +16,29 @@ class UserDashboard extends Component {
         const id = this.props.match.params.userId
         axios.get(`/api/user/${id}`)
         .then(res => {
-            console.log(res.data);
-            this.setState({user: res.data})
-            this.setState({servingsDesired: res.data.today[0].waterRatio[0].servingsDesired})
-            this.setState({servingsConsumed: res.data.today[0].waterRatio[0].servingsConsumed})
+            this.setState({
+                user: res.data, 
+                servingsDesired: res.data.today[0].waterRatio[0].servingsDesired, 
+                servingsConsumed: res.data.today[0].waterRatio[0].servingsConsumed
+            })
             console.log(this.state.user);
-            console.log("This is my water Ratio")
-            console.log(this.state.user.today[0].waterRatio[0].servingsDesired)
+            console.log(this.state.servingsConsumed);
         })
     }
+    _drinkWaterButton = () => {
+        console.log("You drank water!")
+        console.log(this.state.servingsConsumed);
+        const waterConsumed = this.state.servingsConsumed;
+        const id = this.props.match.params.userId;
+
+        axios.put(`/api/user/addNewServingConsumed/${id}`, {userId: this.state.user.id})
+        .then(res => {
+            console.log("Successfully Updated Servings");
+            console.log(res.data);
+            this.setState({ servingsConsumed: waterConsumed + 1});
+        })
+    }
+
 
     render() {
         return (
@@ -34,7 +48,7 @@ class UserDashboard extends Component {
                 <h3>Today</h3>
                 <p>Servings Desired: {this.state.servingsDesired}</p>
                 <p>Servings Consumed: {this.state.servingsConsumed}</p>
-                <button>I drank water!</button>
+                <button onClick={this._drinkWaterButton}>I drank water!</button>
             </div>
         );
     }
