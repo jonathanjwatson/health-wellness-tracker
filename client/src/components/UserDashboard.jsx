@@ -29,7 +29,8 @@ class UserDashboard extends Component {
                 user: res.data, 
                 servingsDesired: res.data.today[0].waterRatio[0].servingsDesired, 
                 servingsConsumed: res.data.today[0].waterRatio[0].servingsConsumed,
-                historicalDataDisplayed: false
+                historicalDataDisplayed: false,
+                redirect: false
             })
             // console.log(this.state.user);
             // console.log(this.state.servingsConsumed);
@@ -40,6 +41,7 @@ class UserDashboard extends Component {
         // console.log(this.state.servingsConsumed);
         const waterConsumed = this.state.servingsConsumed;
         const id = this.props.match.params.userId;
+        const servingsConsumed = this.state.user.today[0].waterRatio[0].servingsConsumed;
         this.setState({ servingsConsumed: waterConsumed + 1});
         axios.put(`/api/user/addNewServingConsumed/${id}`, {userId: this.state.user.id})
         .then(res => {
@@ -53,7 +55,6 @@ class UserDashboard extends Component {
     }
     _showFoodData = () => {
         const foodDataDisplayed = !this.state.foodDataDisplayed;
-        this.setState({foodDataDisplayed})
         this.setState({ redirect: true })
     }
 
@@ -82,11 +83,9 @@ class UserDashboard extends Component {
                     {this.state.historicalDataDisplayed ? <Days user={this.state.user} /> : null}
                 </div>
                 <div>
-                    <button onClick={this._showFoodData}>{this.state.foodDataDisplayed ? 'Hide Food' : 'Show Food'}</button>
+                    <button onClick={this._showFoodData}>Show Food</button>
                 </div>
-                <div>
-                    {this.state.foodDataDisplayed ? <FoodList user={this.state.user} /> : null}
-                </div>
+
                 
             </div>
         );

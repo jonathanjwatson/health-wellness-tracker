@@ -1,23 +1,38 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import FoodItem from './FoodItem';
 
 
 
 
 class FoodList extends Component {
+    constructor() {
+        super();
+        this.state = {
+            foodList: [],            
+        }
+    }
     componentWillMount() {
-        axios.get('/api/user')
+        axios.get('/api/food')
         .then(res => {
             console.log(res.data);
-            this.setState({users: res.data})
-            console.log(this.state.users);
+            this.setState({foodList: res.data})
+            console.log(this.state.food);
         })
     }
 
     render() {
+        const foodList = this.state.foodList
+        console.log(foodList)
+        const foodComponent = foodList.map((foodItem, i) => {
+            return <FoodItem 
+                {...foodItem}
+                key={i}
+                 />;
+        })
         return (
             <div>
-                This is a list of my food
+                {foodComponent}
             </div>
         );
     }

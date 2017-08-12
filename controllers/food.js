@@ -6,8 +6,8 @@ const Food = require("../models/food");
 
 
 router.get("/", (req, res) => {
-  Food.find().then((user) => {
-    res.json(user);
+  Food.find().then((food) => {
+    res.json(food);
   });
 });
 
