@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import styled from 'styled-components'
 import { Link, Redirect } from 'react-router-dom'
+import Days from './Days'
 import Day from './Day'
 
 class UserDashboard extends Component {
@@ -13,6 +14,7 @@ class UserDashboard extends Component {
             },
             servingsDesired: 0,
             servingsConsumed: 0,
+            historicalDataDisplayed: false,
             
         }
     }
@@ -24,6 +26,7 @@ class UserDashboard extends Component {
                 user: res.data, 
                 servingsDesired: res.data.today[0].waterRatio[0].servingsDesired, 
                 servingsConsumed: res.data.today[0].waterRatio[0].servingsConsumed,
+                historicalDataDisplayed: false
             })
             // console.log(this.state.user);
             // console.log(this.state.servingsConsumed);
@@ -41,27 +44,29 @@ class UserDashboard extends Component {
             // console.log(res.data);
         })
     }
+    _showHistoricalData = () => {
+        const historicalDataDisplayed = !this.state.historicalDataDisplayed;
+        this.setState({historicalDataDisplayed})
+    }
+
 
 
     render() {
-        const days = this.state.user.today
-        const dateComponents = days.map((day, i) => {
-            return <Day 
-                {...day}
-                key={i}
-                 />;
-        })
 
         return (
             <div>
                 <h1>Your User Dashbaord</h1>
                 <h2>{this.state.user.firstName}</h2>
-                <div>
-                    { dateComponents }
-                </div>
                 <p>Servings Desired: {this.state.servingsDesired}</p>
                 <p>Servings Consumed: {this.state.servingsConsumed}</p>
                 <button onClick={this._drinkWaterButton}>I drank water!</button>
+                <div>
+                    <button onClick={this._showHistoricalData}>{this.state.historicalDataDisplayed ? 'Hide Historical Data' : 'Show Historical Data'}</button>
+                </div>
+                <div>
+                    {this.state.historicalDataDisplayed ? <Days user={this.state.user} /> : null}
+                </div>
+                
             </div>
         );
     }
