@@ -2,6 +2,7 @@ require("dotenv").config();
 var mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODB_URI);
 
+var Food = require('../models.food');
 var Water = require('../models/water');
 var Day = require('../models/day');
 var User = require('../models/user');
@@ -9,6 +10,7 @@ var User = require('../models/user');
 // Use native promises
 mongoose.Promise = global.Promise;
 
+Food.remove({}, (err) => console.log(err));
 Water.remove({}, (err) => console.log(err));
 Day.remove({}, (err) => console.log(err));
 User.remove({}, (err) => console.log(err));
@@ -25,9 +27,22 @@ const waterThree = new Water({
     servingsConsumed: 5,
     servingsDesired: 10
 })
+const foodOne = new Food({
+    name: 'Pizza',
+    calories: 400
+})
+const foodTwo = new Food({
+    name:'Garlic Knotts',
+    calories: 100
+})
+const foodThree = new Food({
+    name: 'Pecan Pie',
+    calories: 250
+})
 const dayOne = new Day({
     date: new Date(),
-    waterRatio: [waterOne]
+    waterRatio: [waterOne],
+    foodConsumed: [foodOne, foodTwo, foodThree]
 })
 const dayTwo = new Day({
     date: "2017-08-10T19:02:48.200Z",
@@ -52,6 +67,9 @@ const userTwo = new User({
 waterOne.save().then(() => console.log("Water One Saved!"));
 waterTwo.save().then(() => console.log("WaterTwo Saved!"));
 waterThree.save().then(() => console.log("Water Three Saved!"));
+foodOne.save().then(() => console.log("Food One Saved"));
+foodTwo.save().then(() => console.log("Food Two Saved"));
+footThree.save().then(() => console.log("Food Three Saved"));
 dayOne.save().then(() => console.log("Day One Saved"));
 dayTwo.save().then(() => console.log("Day Two Saved!"));
 userOne.save().then(() => console.log("User One Saved!"));

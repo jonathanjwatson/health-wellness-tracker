@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { Link, Redirect } from 'react-router-dom'
 import Days from './Days'
 import Day from './Day'
+import FoodList from './FoodList'
 
 class UserDashboard extends Component {
     constructor() {
@@ -15,6 +16,8 @@ class UserDashboard extends Component {
             servingsDesired: 0,
             servingsConsumed: 0,
             historicalDataDisplayed: false,
+            foodDataDisplayed: false,
+            redirect: false
             
         }
     }
@@ -48,10 +51,22 @@ class UserDashboard extends Component {
         const historicalDataDisplayed = !this.state.historicalDataDisplayed;
         this.setState({historicalDataDisplayed})
     }
+    _showFoodData = () => {
+        const foodDataDisplayed = !this.state.foodDataDisplayed;
+        this.setState({foodDataDisplayed})
+        this.setState({ redirect: true })
+    }
 
 
 
     render() {
+        if (this.state.redirect) {
+             return <Redirect to={{
+                 pathname: `/user/${this.state.user._id}/food`,
+                 state: {user: this.state.user}
+                }}
+                 />;
+        } else {
 
         return (
             <div>
@@ -66,9 +81,16 @@ class UserDashboard extends Component {
                 <div>
                     {this.state.historicalDataDisplayed ? <Days user={this.state.user} /> : null}
                 </div>
+                <div>
+                    <button onClick={this._showFoodData}>{this.state.foodDataDisplayed ? 'Hide Food' : 'Show Food'}</button>
+                </div>
+                <div>
+                    {this.state.foodDataDisplayed ? <FoodList user={this.state.user} /> : null}
+                </div>
                 
             </div>
         );
+        }
     }
 }
 
