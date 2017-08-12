@@ -2,7 +2,7 @@ require("dotenv").config();
 var mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODB_URI);
 
-var Food = require('../models.food');
+var Food = require('../models/food');
 var Water = require('../models/water');
 var Day = require('../models/day');
 var User = require('../models/user');
@@ -69,7 +69,7 @@ waterTwo.save().then(() => console.log("WaterTwo Saved!"));
 waterThree.save().then(() => console.log("Water Three Saved!"));
 foodOne.save().then(() => console.log("Food One Saved"));
 foodTwo.save().then(() => console.log("Food Two Saved"));
-footThree.save().then(() => console.log("Food Three Saved"));
+foodThree.save().then(() => console.log("Food Three Saved"));
 dayOne.save().then(() => console.log("Day One Saved"));
 dayTwo.save().then(() => console.log("Day Two Saved!"));
 userOne.save().then(() => console.log("User One Saved!"));
