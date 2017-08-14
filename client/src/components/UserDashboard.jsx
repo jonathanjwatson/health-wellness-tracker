@@ -35,6 +35,7 @@ class UserDashboard extends Component {
             // console.log(this.state.user);
             // console.log(this.state.servingsConsumed);
         })
+        
     }
     _drinkWaterButton = () => {
         // console.log("You drank water!")
