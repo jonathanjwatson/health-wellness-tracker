@@ -13,7 +13,7 @@ class FoodItem extends Component {
         }
         axios.post(`/api/food`, payload)
         .then(res => {
-            
+            this.props.getUserData();
         })
     }
 

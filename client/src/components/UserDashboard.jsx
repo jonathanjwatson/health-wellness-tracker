@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import styled from 'styled-components'
-import { Link, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import Days from './Days'
 import Day from './Day'
 import FoodList from './FoodList'

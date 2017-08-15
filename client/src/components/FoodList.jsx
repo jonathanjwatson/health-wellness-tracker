@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import FoodItem from './FoodItem';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import FoodAddForm from './FoodAddForm';
 import UserFoodList from './UserFoodList';
 
@@ -12,12 +12,19 @@ class FoodList extends Component {
     constructor() {
         super();
         this.state = {
+            user: {
+                today: [
+                    {
+                        foodConsumed: []
+                    }
+                ],
+            },
             foodList: [],    
             }      
         }
     componentWillMount() {
         this._getFoodItems();
-        // this._getUserData();
+        this._getUserData();
     }
     _getFoodItems = () => {
         axios.get('/api/food')
@@ -27,8 +34,14 @@ class FoodList extends Component {
             console.log("FoodList Array:")
             console.log(this.state.foodList);
         })
-        
         console.log(this.state.user);
+    }
+    _getUserData = () => {
+        const userId = this.props.match.params.userId
+        axios.get(`/api/user/${userId}`)
+        .then(res => {
+            this.setState({user: res.data})
+        })
     }
 
     render() {
@@ -38,6 +51,7 @@ class FoodList extends Component {
             return <FoodItem 
                 {...foodItem}
                 {...this.props}
+                getUserData={this._getUserData}
                 key={i}
                  />;
         })
@@ -46,7 +60,7 @@ class FoodList extends Component {
             <div>
                 <Link to={`/user/${userId}`}><button>Return to Dashboard</button></Link>
                 <h1>Today's Food Items</h1>
-                <UserFoodList userId={userId}/>
+                <UserFoodList user={this.state.user} userId={userId} getUserData={this._getUserData}/>
                 <h1>Available Food Items in Database</h1>
                 {foodComponent}
                 <FoodAddForm {...this.props} getFoodItems={this._getFoodItems}/>

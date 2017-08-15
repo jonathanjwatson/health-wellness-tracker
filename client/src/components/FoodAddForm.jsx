@@ -22,7 +22,6 @@ class FoodAddForm extends Component {
     _handleSubmit = (e) => {
         e.preventDefault();
         const payload = this.state;
-        const userId = this.props.match.params.userId
         axios.post(`/api/food/create`, payload)
         .then((res) => {
             console.log("success")
