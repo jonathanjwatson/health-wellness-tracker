@@ -1,38 +1,39 @@
 const express = require("express");
 const router = express.Router();
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 const Food = require("../models/food");
 const User = require("../models/user");
 
-
 router.get("/", (req, res) => {
-  Food.find().then((food) => {
+  Food.find().then(food => {
     res.json(food);
   });
 });
 
 router.post("/create", (req, res) => {
   const newFoodInfo = req.body.foodItem;
-  console.log(newFoodInfo)
+  console.log(newFoodInfo);
   const newFood = new Food(newFoodInfo);
   console.log(newFood);
-  newFood.save()
-  .then(() => {
-    res.json(newFood);
-  }
-  ).catch(err => console.log(err))
-})
+  newFood
+    .save()
+    .then(() => {
+      res.json(newFood);
+    })
+    .catch(err => console.log(err));
+});
 
 router.post("/", (req, res) => {
   const userId = req.body.userId;
   console.log(userId);
-  Food.findById(req.body.foodId)
-  .then((food) => {
-    res.json(food);
-
-  })
-})
-
+  Food.findById(req.body.foodId).then(food => {
+    User.findById(req.body.userId).then(user => {
+      res.json(user)
+      user.today[0].foodConsumed.push(food);
+      return user.save();
+    });
+  });
+});
 
 // router.put("/addNewServingConsumed/:id", (req, res) => {
 //   User.findById(req.params.id).then((user) => {
@@ -52,8 +53,5 @@ router.post("/", (req, res) => {
 //     res.json(user);
 //   })
 // })
-
-
-
 
 module.exports = router;
