@@ -38,15 +38,16 @@ Bug: Deleting a food item that is listed multiple times deletes all elements wit
 
 
 
-### Sketh wireframes
+### Skecth wireframes
 
-![Wireframe 3](https://github.com/jwats287/health-wellness-tracker/blob/master/images/Desktop-HD.png?raw=true)
+![Wireframe 1](https://github.com/jwats287/health-wellness-tracker/blob/master/images/Desktop%20HD.png?raw=true)
 
-### Hand-drawn wireframes
+![Wireframe 2](https://github.com/jwats287/health-wellness-tracker/blob/master/images/Dashboard.png?raw=true)
 
-![Wireframe 1](https://github.com/jwats287/blackjack/blob/master/images/Wireframe-1.jpg?raw=true)
+![Wireframe 3](https://github.com/jwats287/health-wellness-tracker/blob/master/images/Log%20Meal%20Selector.png?raw=true)
 
-![Wireframe 2](https://github.com/jwats287/blackjack/blob/master/images/Wireframe-2.jpg?raw=true)
+![Wireframe 4](https://github.com/jwats287/health-wellness-tracker/blob/master/images/Log%20Meal%20Edit%20Copy.png?raw=true)
+
 
 ## Future Development
 
