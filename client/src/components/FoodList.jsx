@@ -57,7 +57,7 @@ class FoodList extends Component {
         })
         const userId = this.props.match.params.userId
         return (
-            <div>
+            <div className="userDashboard">
                 <div>
                     <div className="header">
                 <Link to={`/user/${userId}`}><button className="primary">Return to Dashboard</button></Link>

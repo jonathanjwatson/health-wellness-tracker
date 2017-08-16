@@ -45,7 +45,8 @@ button {
     background-color: #1b4c75;
   color: white;
   border: none;
-  margin: .5em;
+  margin-left: .5em;
+  margin-right: .5em;
 }
 .delete{
   background-color: #aa181e;
@@ -64,6 +65,8 @@ button {
 }
 .addNewFoodForm {
   padding-bottom:9em;
+  display:flex;
+  flex-wrap:wrap;
 }
 .wholeFoodItem {
   background-color:#f8f8f8;
@@ -71,8 +74,18 @@ button {
 .header{
   text-align:right;
 }
+.userDashboard{
+  margin:auto;
+}
+@media only screen and (max-width: 1200px) {
+  .addNewFoodForm{
+    display:block;
+    text-align:center;
+    margin:auto;
+  }
+}
 @media only screen and (max-width: 700px) {
-  .splash-image{
-    padding-bottom:4em;
+  .userDashboard{
+    text-align:center;
   }
 }

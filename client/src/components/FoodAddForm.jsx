@@ -36,6 +36,7 @@ class FoodAddForm extends Component {
             <div className="row">
                 <h2>Add new food:</h2>
                 <form className="addNewFoodForm" onSubmit={this._handleSubmit}>
+                <div className="form-field">
                     <label htmlFor="name">Food Name: </label>
                         <input 
                             type="text" 
@@ -44,6 +45,8 @@ class FoodAddForm extends Component {
                             name="name"
                             placeholder="New Food Name"
                         />
+                </div>
+                <div className="form-field">
                 <label htmlFor="calories">Food Calories: </label>
                         <input 
                             type="text" 
@@ -52,6 +55,7 @@ class FoodAddForm extends Component {
                             name="calories"
                             placeholder="New Food Calories"
                         />
+                </div>
                 <button className="primary">Add new Food to Database</button>
                 </form>
             </div>
