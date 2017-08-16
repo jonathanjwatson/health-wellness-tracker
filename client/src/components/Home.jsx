@@ -64,6 +64,7 @@ class Home extends Component {
                  />;
         } else {
                     return (
+            <div className="row">
             <AlignCenter>
                 <form>
                 <div>
@@ -83,13 +84,13 @@ class Home extends Component {
                 />
                 </div>
                 <div>
-                    <button>Create Account</button>
-                    <button onClick={this._logIn}>Login</button>
+
+                    <button className="primary" onClick={this._logIn}>Login</button>
                 </div>
 
                 </form>
 
-
+                <div className="userList">
                 {this.state.users.map((user, i) => (
                     <div key={i}>
                         <Link to={`/user/${user._id}`}>
@@ -97,7 +98,9 @@ class Home extends Component {
                         </Link>
                     </div>
                 ))}
+                </div>
             </AlignCenter>
+            </div>
         );
         }
     }
