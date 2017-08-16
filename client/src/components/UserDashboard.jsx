@@ -71,7 +71,7 @@ class UserDashboard extends Component {
 
         return (
             <div className="row">
-                <h1>Your User Dashbaord</h1>
+                <h1>Your User Dashboard</h1>
                 <h2>{this.state.user.firstName}</h2>
                 <p>Servings Desired: {this.state.servingsDesired}</p>
                 <p>Servings Consumed: {this.state.servingsConsumed}</p>
@@ -83,7 +83,7 @@ class UserDashboard extends Component {
                     {this.state.historicalDataDisplayed ? <Days user={this.state.user} /> : null}
                 </div>
                 <div>
-                    <button onClick={this._showFoodData}>Show Food</button>
+                    <button className="primary" onClick={this._showFoodData}>Show Food</button>
                 </div>
 
                 

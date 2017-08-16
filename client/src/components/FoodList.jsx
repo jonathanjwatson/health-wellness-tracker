@@ -59,7 +59,9 @@ class FoodList extends Component {
         return (
             <div>
                 <div>
-                <Link to={`/user/${userId}`}><button>Return to Dashboard</button></Link>
+                    <div className="header">
+                <Link to={`/user/${userId}`}><button className="primary">Return to Dashboard</button></Link>
+                </div>
                 <h1>Today's Food Items</h1>
                 <UserFoodList user={this.state.user} userId={userId} getUserData={this._getUserData}/>
                 <h1>Available Food Items in Database</h1>
