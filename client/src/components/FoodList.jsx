@@ -58,11 +58,15 @@ class FoodList extends Component {
         const userId = this.props.match.params.userId
         return (
             <div>
+                <div>
                 <Link to={`/user/${userId}`}><button>Return to Dashboard</button></Link>
                 <h1>Today's Food Items</h1>
                 <UserFoodList user={this.state.user} userId={userId} getUserData={this._getUserData}/>
                 <h1>Available Food Items in Database</h1>
+                </div>
+                <div className="wholeFoodItem">
                 {foodComponent}
+                </div>
                 <FoodAddForm {...this.props} getFoodItems={this._getFoodItems}/>
             </div>
         );

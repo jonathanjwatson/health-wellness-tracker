@@ -1,18 +1,37 @@
+@import url("https://fonts.googleapis.com/css?family=Saira");
+
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: Saira;
+  height:100%
 }
+.background-cover{
+  text-align:center;
+  margin:auto;
+  background: url('http://www.gogreen.org/portals/0/images/health-topic-image.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  font-size: 1rem;
+  color: white;
+  font-family: 'Saira';
+  justify-content: center;
+  align-items: center;
+  position:relative;
+  min-height:1024px;
+}
+    
 .row{
   width:90%;
   margin:auto;
   padding-top:4em;
 }
-
-.row input{
+input{
   width:26em;
-  height:3em;
-  border:1px solid #000;
+  height:4em;
+  border: 1px solid #000
 }
 button {
     padding: 15px 32px;
@@ -22,13 +41,26 @@ button {
     font-size: 16px;
     border-radius:4px;
     width:18em;
-}
-.primary{
-  background-color: #1b4c75;
+    background-color: #1b4c75;
   color: white;
   border: none;
-  margin-top:.5em;
+  margin: .5em;
+}
+.delete{
+  background-color: #aa181e;
+}
+.secondary{
+  background-color:#0fac08;
 }
 .userList {
   padding-top:1em;
+}
+.addNewFood {
+  background-color: #c3c3c3;
+}
+.addNewFoodForm {
+  padding-bottom:9em;
+}
+.wholeFoodItem {
+  background-color:#f8f8f8;
 }

@@ -64,7 +64,7 @@ const userTwo = new User({
     weight: 95,
     today: [dayOne]
 })
-const userThree = newUser({
+const userThree = new User({
     firstName: "William",
     lastName: "Huizenga",
     email:"willy@gmail.com",

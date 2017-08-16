@@ -70,14 +70,14 @@ class UserDashboard extends Component {
         } else {
 
         return (
-            <div>
+            <div className="row">
                 <h1>Your User Dashbaord</h1>
                 <h2>{this.state.user.firstName}</h2>
                 <p>Servings Desired: {this.state.servingsDesired}</p>
                 <p>Servings Consumed: {this.state.servingsConsumed}</p>
                 <button onClick={this._drinkWaterButton}>I drank water!</button>
                 <div>
-                    <button onClick={this._showHistoricalData}>{this.state.historicalDataDisplayed ? 'Hide Historical Data' : 'Show Historical Data'}</button>
+                    <button className="secondary" onClick={this._showHistoricalData}>{this.state.historicalDataDisplayed ? 'Hide Historical Data' : 'Show Historical Data'}</button>
                 </div>
                 <div>
                     {this.state.historicalDataDisplayed ? <Days user={this.state.user} /> : null}

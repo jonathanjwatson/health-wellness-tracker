@@ -5,11 +5,6 @@ import { Link, Redirect } from 'react-router-dom';
 import UserDashboard from "./UserDashboard";
 
 
-const AlignCenter = styled.div`
-    text-align:center;
-    margin:auto;
-`
-
 class Home extends Component {
     constructor() {
         super();
@@ -64,8 +59,9 @@ class Home extends Component {
                  />;
         } else {
                     return (
+            <div className="background-cover">
             <div className="row">
-            <AlignCenter>
+            
                 <form>
                 <div>
                 <input 
@@ -99,7 +95,8 @@ class Home extends Component {
                     </div>
                 ))}
                 </div>
-            </AlignCenter>
+            
+            </div>
             </div>
         );
         }

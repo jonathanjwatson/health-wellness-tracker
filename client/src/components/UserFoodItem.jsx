@@ -63,13 +63,13 @@ constructor() {
                 <p>{this.props.name} : {this.props.calories}
                 </p>
                 <p>
-                <button onClick={this._editFood}>Edit Item</button><button onClick={this._removeFromDay}>Remove from my day</button>
+                <button onClick={this._editFood}>Edit Item</button><button className="delete" onClick={this._removeFromDay}>Remove from my day</button>
                 </p>
                 <div>
                     {this.state.showEdit ? 
-                                <div>
+                        <div>
                             <form onSubmit={this._updateFood}>
-                                <label htmlFor="name">Food Name</label>
+                                <label htmlFor="name">Food Name: </label>
                                     <input 
                                         type="text" 
                                         onChange={this._handleChange} 
@@ -77,7 +77,7 @@ constructor() {
                                         name="name"
                                         placeholder="Food Name"
                                     />
-                            <label htmlFor="calories">Food Calories</label>
+                            <label htmlFor="calories">Food Calories: </label>
                                     <input 
                                         type="text" 
                                         onChange={this._handleChange} 

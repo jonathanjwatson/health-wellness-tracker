@@ -32,10 +32,11 @@ class FoodAddForm extends Component {
 
     render() {
         return (
-            <div>
-                <h4>Add new food:</h4>
-                <form onSubmit={this._handleSubmit}>
-                    <label htmlFor="name">Food Name</label>
+            <div className="addNewFood">
+            <div className="row">
+                <h3>Add new food:</h3>
+                <form className="addNewFoodForm" onSubmit={this._handleSubmit}>
+                    <label htmlFor="name">Food Name: </label>
                         <input 
                             type="text" 
                             onChange={this._handleChange} 
@@ -43,7 +44,7 @@ class FoodAddForm extends Component {
                             name="name"
                             placeholder="New Food Name"
                         />
-                <label htmlFor="calories">Food Calories</label>
+                <label htmlFor="calories">Food Calories: </label>
                         <input 
                             type="text" 
                             onChange={this._handleChange} 
@@ -53,6 +54,7 @@ class FoodAddForm extends Component {
                         />
                 <button>Add new Food to Database</button>
                 </form>
+            </div>
             </div>
         );
     }
