@@ -60,11 +60,10 @@ constructor() {
     render() {
         return (
             <div>
-                <p>{this.props.name} : {this.props.calories}  : {this.props._id}
-                <button onClick={this._removeFromDay}>Remove from my day</button>
+                <p>{this.props.name} : {this.props.calories}
                 </p>
                 <p>
-                <button onClick={this._editFood}>Edit Item</button>
+                <button onClick={this._editFood}>Edit Item</button><button onClick={this._removeFromDay}>Remove from my day</button>
                 </p>
                 <div>
                     {this.state.showEdit ? 

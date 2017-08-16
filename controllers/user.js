@@ -2,12 +2,22 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require('mongoose')
 const User = require("../models/user");
+const Food = require('../models/food');
 
 
 
 router.get("/", (req, res) => {
   User.find().then((user) => {
     res.json(user);
+  });
+});
+router.get("/:userId/food/:foodId", (req, res) => {
+  User.findById(req.params.userId).then((user) => {
+    const foodId = req.params.foodId
+    const foodConsumed = user.today[0].foodConsumed
+    Food.findById(foodId).then((food) => {
+      res.json(food);
+    })
   });
 });
 

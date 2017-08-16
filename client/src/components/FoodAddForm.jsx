@@ -33,6 +33,7 @@ class FoodAddForm extends Component {
     render() {
         return (
             <div>
+                <h4>Add new food:</h4>
                 <form onSubmit={this._handleSubmit}>
                     <label htmlFor="name">Food Name</label>
                         <input 
@@ -40,7 +41,7 @@ class FoodAddForm extends Component {
                             onChange={this._handleChange} 
                             value={this.state.foodItem.name} 
                             name="name"
-                            placeholder="Food Name"
+                            placeholder="New Food Name"
                         />
                 <label htmlFor="calories">Food Calories</label>
                         <input 
@@ -48,7 +49,7 @@ class FoodAddForm extends Component {
                             onChange={this._handleChange} 
                             value={this.state.foodItem.calories} 
                             name="calories"
-                            placeholder="Food Calories"
+                            placeholder="New Food Calories"
                         />
                 <button>Add new Food to Database</button>
                 </form>

@@ -20,7 +20,7 @@ class FoodItem extends Component {
     render() {
         return (
             <div>
-                <p>{this.props.name} : {this.props.calories}  : {this.props._id}<button onClick={this._addToDay}>Add to my day</button></p>
+                <p>{this.props.name} : {this.props.calories}  <button onClick={this._addToDay}>Add to my day</button></p>
             </div>
         );
     }
