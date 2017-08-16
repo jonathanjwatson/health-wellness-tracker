@@ -40,7 +40,7 @@ Bug: Deleting a food item that is listed multiple times deletes all elements wit
 
 ### Sketh wireframes
 
-![Wireframe 3](https://github.com/jwats287/health-wellness-tracker/blob/master/images/Desktop HD.png?raw=true)
+![Wireframe 3](https://github.com/jwats287/health-wellness-tracker/blob/master/images/Desktop-HD.png?raw=true)
 
 ### Hand-drawn wireframes
 
